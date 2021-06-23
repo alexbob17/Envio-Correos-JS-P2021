@@ -26,6 +26,7 @@ function iniciarApp(){
 }
 
 
+
 //Valida el formulario
 
 function validarFormulario(e){
