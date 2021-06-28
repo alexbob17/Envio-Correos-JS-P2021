@@ -40,6 +40,12 @@ form {
 #spinner {
     display: none;
 }
+#email{
+    color: #000;
+}
+#mensaje{
+    color: #000;
+}
 .btnEnviar{
     cursor: not-allowed;
     opacity: 0.5;
@@ -54,5 +60,17 @@ form {
    text-align: center;
    font-size: 20px;
    border: 1px solid rgb(83, 82, 82);
+   padding:0.8rem;
+}
+
+.Mensajesave{
+   background-color: #5ed82d;
+   color: #fff;
+   font-weight: 500;
+   width: 100%;
+   height: 50px;
+   text-align: center;
+   font-size: 20px;
+   border: 1px solid rgb(44, 43, 43);
    padding:0.8rem;
 }

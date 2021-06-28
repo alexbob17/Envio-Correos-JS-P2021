@@ -1,4 +1,4 @@
-//Variables
+//Variables Globales
 const btnEnviar = document.querySelector('#enviar');
 const formulario = document.querySelector('#enviar-mail')
 
@@ -30,22 +30,33 @@ function iniciarApp(){
 //Valida el formulario
 
 function validarFormulario(e){
+
+    //elimina los errores
+    const error = document.querySelector('Mensajeerror');
+    error.remove();
     //Valida si el usuario ingreso algo en el input
     if(e.target.value.length > 0){
-        console.log('si')
+        e.target.classList.remove('Mensajeerror');
+        e.target.classList.add('Mensajesave');
     }else{
+        e.target.classList.remove('Mensajesave');
         e.target.style.borderBottomColor = 'red'; //Añade una clase border bottom rojo indicando un error
         mostrarError('Todos los campos son obligatorios');
     }
-    if(e.target.type === 'email'){                      //Comprueba si el tipo de value es de tipo Email
-        const resultado = e.target.value.indexOf('@');  // y busca si este posee un @
-        if(resultado<0){
-            mostrarError('El email no es valido');
+    if(e.target.type === 'email'){             
+        const er= /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        //Comprueba si el tipo de value es de tipo Email
+        if(er.test(e.target.value)){
+            mostrarError('Email Valido');
+        }
+        else{
+            e.target.classList.add('Mensajeerror');
+            mostrarError('Email no valido')
         }
     }
 }
 
-//Mostrando error
+//Mostrando error en la pantalla
 function mostrarError(mensaje){
     //Crea un elemento De parrafo con el mensaje definido, Solo se añade la clase para los estilos
     const mensajeError = document.createElement('p');
